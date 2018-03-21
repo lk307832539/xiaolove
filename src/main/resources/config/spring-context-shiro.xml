@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/context  http://www.springframework.org/schema/context/spring-context-4.0.xsd"
+       default-lazy-init="true">
+
+
+    <!-- 安全认证过滤器 -->
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager" /><!--
+        <property name="loginUrl" value="${cas.server.url}?service=${cas.project.url}${adminPath}/cas" /> -->
+        <property name="loginUrl" value="/login.do" />
+        <!-- 认证成功统一跳转到first.action，建议不配置，shiro认证成功自动到上一个请求路径 -->
+        <property name="successUrl" value="/loginSuccess.do"/>
+        <property name="filters">
+            <map>
+                <entry key="authc" value-ref="authcFilter" />
+            </map>
+        </property>
+        <property name="filterChainDefinitions">
+            <ref bean="shiroFilterChainDefinitions"/>
+        </property>
+    </bean>
+
+
+
+    <!-- Shiro权限过滤过滤器定义 -->
+    <bean name="shiroFilterChainDefinitions" class="java.lang.String">
+        <constructor-arg>
+            <value>
+                /source/** = anon
+                /upload/** = anon
+                /login.do = authc
+                /logout.do = logout
+            </value>
+        </constructor-arg>
+    </bean>
+
+
+    <!--自定义AuthenticationFilter如增加验证码-->
+    <bean id="authcFilter" class="com.xxkxxy.security.CustomAuthenticationFilter">
+        <!-- 表单中账号的input名称 -->
+        <property name="usernameParam" value="username" />
+        <!-- 表单中密码的input名称 -->
+        <property name="passwordParam" value="password" />
+        <!-- 记住我input的名称 -->
+        <!--<property name="rememberMeParam" value="rememberMe"/>-->
+    </bean>
+
+    <!-- CAS认证过滤器 -->
+    <!--<bean id="casFilter" class="org.apache.shiro.cas.CasFilter">
+        <property name="failureUrl" value="${adminPath}/login"/>
+    </bean>-->
+
+    <!-- 定义Shiro安全管理配置 -->
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="realm" ref="customRealm" />
+        <property name="sessionManager" ref="sessionManager" />
+        <property name="cacheManager" ref="shiroEhcacheManager" />
+    </bean>
+
+    <!-- realm -->
+    <bean id="customRealm" class="com.xxkxxy.security.CustomAuthorizingRealm">
+        <!--暂时没用md5加密-->
+        <!--<property name="credentialsMatcher" ref="credentialsMatcher"/>-->
+    </bean>
+
+    <!-- 凭证匹配器 -->
+    <!--<bean id="credentialsMatcher"
+          class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+        <property name="hashAlgorithmName" value="md5" />
+        <property name="hashIterations" value="1" />
+    </bean>-->
+
+    <!-- 自定义会话管理配置 -->
+    <bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
+        <!-- session的失效时长，单位毫秒 -->
+        <property name="globalSessionTimeout" value="600000"/>
+        <!-- 删除失效的session -->
+        <property name="deleteInvalidSessions" value="true"/>
+    </bean>
+
+    <!-- 定义授权缓存管理器 -->
+    <bean id="shiroEhcacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+        <property name="cacheManagerConfigFile">
+            <value>classpath:config/ehcache-shiro.xml</value>
+        </property>
+    </bean>
+
+    <!-- 保证实现了Shiro内部lifecycle函数的bean执行 -->
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+
+    <!-- AOP式方法级权限检查  -->
+    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" depends-on="lifecycleBeanPostProcessor">
+        <property name="proxyTargetClass" value="true" />
+    </bean>
+    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+        <property name="securityManager" ref="securityManager"/>
+    </bean>
+
+</beans>
