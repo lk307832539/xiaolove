@@ -2,9 +2,12 @@ package com.xxkxxy.dao.impl;
 
 import com.xxkxxy.dao.UserDao;
 import com.xxkxxy.entity.User;
+import com.xxkxxy.entity.base.BaseUser;
+import com.xxkxxy.mapper.UserMapper;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -13,6 +16,9 @@ import java.util.List;
 @Repository
 @Transactional
 public class UserDaoImpl implements UserDao {
+
+    @Resource
+    private UserMapper userMapper;
 
     @Override
     public List<User> getAllUser() {
