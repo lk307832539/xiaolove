@@ -1,7 +1,7 @@
 package com.xxkxxy.controller;
 
 import com.xxkxxy.entity.User;
-import com.xxkxxy.service.UserMng;
+import com.xxkxxy.service.UserService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
@@ -14,13 +14,14 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 // 将user的值存到session中
 @SessionAttributes("user")
 @Controller
 public class LoginAct {
     @Resource
-    private UserMng userMng;
+    private UserService userMng;
 
     @RequestMapping(value = "/login")
     public String login(String username, String password, HttpServletRequest request, HttpServletResponse response,
@@ -64,8 +65,14 @@ public class LoginAct {
                                ModelMap model) throws Exception {
         Subject subject = SecurityUtils.getSubject();
         String username = (String) subject.getPrincipal();
-        User user = userMng.getUserByUserName(username);
-        model.addAttribute("user", user);
+
+        User user = new User();
+        user.setUserName(username);
+        List<User> users = this.userMng.select(user);
+        if (users.size() > 0) {
+            model.addAttribute("user", users.get(0));
+        }
+
         return "index/index";
 
     }

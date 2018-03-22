@@ -1,7 +1,7 @@
 package com.xxkxxy.security;
 
 import com.xxkxxy.entity.User;
-import com.xxkxxy.service.UserMng;
+import com.xxkxxy.service.UserService;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
@@ -9,6 +9,7 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * shiro 授权
@@ -17,7 +18,7 @@ import javax.annotation.Resource;
 public class CustomAuthorizingRealm extends AuthorizingRealm {
 
     @Resource
-    private UserMng userMng;
+    private UserService userMng;
 
     /**
      * 获取授权信息
@@ -29,7 +30,11 @@ public class CustomAuthorizingRealm extends AuthorizingRealm {
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
 
         String username = (String) principals.getPrimaryPrincipal();
-        User user = userMng.getUserByUserName(username);
+
+        User user = new User();
+        user.setUserName(username);
+        userMng.select(user);
+
         SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
         return simpleAuthorizationInfo;
 
@@ -84,9 +89,12 @@ public class CustomAuthorizingRealm extends AuthorizingRealm {
         // 第一步从token中取出用户名
         UsernamePasswordToken authcToken = (UsernamePasswordToken) token;
 
-        User user = this.userMng.getUserByUserName(authcToken.getUsername());
+        User user = new User();
+        user.setUserName(authcToken.getUsername());
+        List<User> users = this.userMng.select(user);
 
-        if (user != null) {
+        if (users.size() > 0) {
+            user = users.get(0);
             return new SimpleAuthenticationInfo(user.getUserName(), user.getPassword(), getName());
         } else {
             return null;

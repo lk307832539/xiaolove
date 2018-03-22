@@ -1,18 +1,16 @@
 package com.xxkxxy.dao;
 
+import org.apache.ibatis.annotations.Param;
+import java.util.List;
 import com.xxkxxy.entity.User;
 
-import java.util.List;
+public interface UserDao {
 
-/**
- * Created by LK on 2018/3/20.
- */
-public abstract interface UserDao {
-    List<User> getAllUser();
+    int insert(@Param("pojo") User pojo);
 
-    User getUserById(Integer id);
+    int insertList(@Param("pojos") List< User> pojo);
 
-    User getUserByUserName(String userName);
+    List<User> select(@Param("pojo") User pojo);
 
-    void addUser(User user);
+    int update(@Param("pojo") User pojo);
 }
