@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xxkxxy.dao.UserDao">
+
+<!--auto generated Code-->
+    <resultMap id="AllColumnMap" type="com.xxkxxy.entity.User">
+        <result column="user_id" property="userId"/>
+        <result column="user_name" property="userName"/>
+        <result column="nike_name" property="nikeName"/>
+        <result column="email" property="email"/>
+        <result column="password" property="password"/>
+        <result column="salt" property="salt"/>
+        <result column="last_login_ip" property="lastLoginIp"/>
+        <result column="login_count" property="loginCount"/>
+        <result column="validate_code" property="validateCode"/>
+        <result column="score" property="score"/>
+    </resultMap>
+
+<!--auto generated Code-->
+    <sql id="all_column">
+        user_id,
+        user_name,
+        nike_name,
+        email,
+        password,
+        salt,
+        last_login_ip,
+        login_count,
+        validate_code,
+        score
+    </sql>
+
+<!--auto generated Code-->
+    <insert id="insert">
+        INSERT INTO user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.userId != null"> user_id, </if>
+            <if test="pojo.userName != null"> user_name, </if>
+            <if test="pojo.nikeName != null"> nike_name, </if>
+            <if test="pojo.email != null"> email, </if>
+            <if test="pojo.password != null"> password, </if>
+            <if test="pojo.salt != null"> salt, </if>
+            <if test="pojo.lastLoginIp != null"> last_login_ip, </if>
+            <if test="pojo.loginCount != null"> login_count, </if>
+            <if test="pojo.validateCode != null"> validate_code, </if>
+            <if test="pojo.score != null"> score, </if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.userId != null"> #{pojo.userId}, </if>
+            <if test="pojo.userName != null"> #{pojo.userName}, </if>
+            <if test="pojo.nikeName != null"> #{pojo.nikeName}, </if>
+            <if test="pojo.email != null"> #{pojo.email}, </if>
+            <if test="pojo.password != null"> #{pojo.password}, </if>
+            <if test="pojo.salt != null"> #{pojo.salt}, </if>
+            <if test="pojo.lastLoginIp != null"> #{pojo.lastLoginIp}, </if>
+            <if test="pojo.loginCount != null"> #{pojo.loginCount}, </if>
+            <if test="pojo.validateCode != null"> #{pojo.validateCode}, </if>
+            <if test="pojo.score != null"> #{pojo.score}, </if>
+        </trim>
+    </insert>
+
+<!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO user(
+        <include refid="all_column"/>
+        )VALUES
+        <foreach collection="pojos" item="pojo" index="index" separator=",">
+            (
+            #{pojo.userId},
+            #{pojo.userName},
+            #{pojo.nikeName},
+            #{pojo.email},
+            #{pojo.password},
+            #{pojo.salt},
+            #{pojo.lastLoginIp},
+            #{pojo.loginCount},
+            #{pojo.validateCode},
+            #{pojo.score}
+            )
+        </foreach>
+    </insert>
+
+<!--auto generated Code-->
+    <update id="update">
+        UPDATE user
+        <set>
+            <if test="pojo.userId != null"> user_id = #{pojo.userId}, </if>
+            <if test="pojo.userName != null"> user_name = #{pojo.userName}, </if>
+            <if test="pojo.nikeName != null"> nike_name = #{pojo.nikeName}, </if>
+            <if test="pojo.email != null"> email = #{pojo.email}, </if>
+            <if test="pojo.password != null"> password = #{pojo.password}, </if>
+            <if test="pojo.salt != null"> salt = #{pojo.salt}, </if>
+            <if test="pojo.lastLoginIp != null"> last_login_ip = #{pojo.lastLoginIp}, </if>
+            <if test="pojo.loginCount != null"> login_count = #{pojo.loginCount}, </if>
+            <if test="pojo.validateCode != null"> validate_code = #{pojo.validateCode}, </if>
+            <if test="pojo.score != null"> score = #{pojo.score} </if>
+        </set>
+         WHERE id = #{pojo.id}
+    </update>
+
+<!--auto generated Code-->
+    <select id="select" resultMap="AllColumnMap">
+        SELECT <include refid="all_column"/>
+        FROM user
+        <where>
+            <if test="pojo.userId != null"> AND user_id = #{pojo.userId} </if>
+            <if test="pojo.userName != null"> AND user_name = #{pojo.userName} </if>
+            <if test="pojo.nikeName != null"> AND nike_name = #{pojo.nikeName} </if>
+            <if test="pojo.email != null"> AND email = #{pojo.email} </if>
+            <if test="pojo.password != null"> AND password = #{pojo.password} </if>
+            <if test="pojo.salt != null"> AND salt = #{pojo.salt} </if>
+            <if test="pojo.lastLoginIp != null"> AND last_login_ip = #{pojo.lastLoginIp} </if>
+            <if test="pojo.loginCount != null"> AND login_count = #{pojo.loginCount} </if>
+            <if test="pojo.validateCode != null"> AND validate_code = #{pojo.validateCode} </if>
+            <if test="pojo.score != null"> AND score = #{pojo.score} </if>
+        </where>
+        LIMIT 1000 
+    </select>
+
+    <!--auto generated Code-->
+    <delete id="delete">
+        DELETE FROM user where id = #{pojo.id}
+    </delete>
+
+</mapper>
