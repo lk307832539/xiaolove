@@ -12,11 +12,4 @@
             diskPersistent="false"
             diskExpiryThreadIntervalSeconds="120"
     />
-    <cache name="com.xxkxxy.security"
-           maxElementsInMemory="500"
-           eternal="false"
-           timeToIdleSeconds="1200"
-           overflowToDisk="true"
-           diskPersistent="true"/>
-
 </ehcache>

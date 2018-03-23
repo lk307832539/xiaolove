@@ -29,4 +29,8 @@ public class UserService {
         return userDao.update(pojo);
     }
 
+    public User findByUserName(String userName) {
+        return userDao.findByUserName(userName);
+    }
+
 }

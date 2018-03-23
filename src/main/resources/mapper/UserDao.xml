@@ -118,6 +118,12 @@
         LIMIT 1000 
     </select>
 
+    <select id="findByUserName" resultMap="AllColumnMap">
+        SELECT <include refid="all_column"/>
+        FROM user
+        where user_name = #{userName}
+    </select>
+
     <!--auto generated Code-->
     <delete id="delete">
         DELETE FROM user where id = #{pojo.id}

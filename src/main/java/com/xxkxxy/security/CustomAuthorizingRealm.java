@@ -9,7 +9,6 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * shiro 授权
@@ -31,9 +30,7 @@ public class CustomAuthorizingRealm extends AuthorizingRealm {
 
         String username = (String) principals.getPrimaryPrincipal();
 
-        User user = new User();
-        user.setUserName(username);
-        userMng.select(user);
+        User user = this.userMng.findByUserName(username);
 
         SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
         return simpleAuthorizationInfo;
@@ -89,12 +86,9 @@ public class CustomAuthorizingRealm extends AuthorizingRealm {
         // 第一步从token中取出用户名
         UsernamePasswordToken authcToken = (UsernamePasswordToken) token;
 
-        User user = new User();
-        user.setUserName(authcToken.getUsername());
-        List<User> users = this.userMng.select(user);
+        User user = this.userMng.findByUserName(authcToken.getUsername());
 
-        if (users.size() > 0) {
-            user = users.get(0);
+        if (user != null) {
             return new SimpleAuthenticationInfo(user.getUserName(), user.getPassword(), getName());
         } else {
             return null;

@@ -13,4 +13,6 @@ public interface UserDao {
     List<User> select(@Param("pojo") User pojo);
 
     int update(@Param("pojo") User pojo);
+
+    User findByUserName(@Param("userName") String userName);
 }

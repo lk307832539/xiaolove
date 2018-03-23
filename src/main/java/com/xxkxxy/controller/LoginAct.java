@@ -2,6 +2,7 @@ package com.xxkxxy.controller;
 
 import com.xxkxxy.entity.User;
 import com.xxkxxy.service.UserService;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
@@ -14,7 +15,6 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.List;
 
 // 将user的值存到session中
 @SessionAttributes("user")
@@ -57,7 +57,18 @@ public class LoginAct {
 
     @RequestMapping(value = "/simpleRegist")
     public String simpleRegist(String username, String email, String password, String repassword, HttpServletRequest request, HttpServletResponse response, ModelMap model) {
-        return "login";
+        if (StringUtils.isNotBlank(username) && StringUtils.isNotBlank(email) && StringUtils.isNotBlank(password) && StringUtils.isNotBlank(repassword) && password.equals(repassword)) {
+            User user = userMng.findByUserName(username);
+            if (user == null) {
+                user = new User();
+                user.setUserName(username);
+                user.setEmail(email);
+                user.setPassword(password);
+                userMng.insert(user);
+            }
+        }
+
+        return "index/index";
     }
 
     @RequestMapping(value = "/loginSuccess")
@@ -66,11 +77,9 @@ public class LoginAct {
         Subject subject = SecurityUtils.getSubject();
         String username = (String) subject.getPrincipal();
 
-        User user = new User();
-        user.setUserName(username);
-        List<User> users = this.userMng.select(user);
-        if (users.size() > 0) {
-            model.addAttribute("user", users.get(0));
+        User user = this.userMng.findByUserName(username);
+        if (user != null) {
+            model.addAttribute("user", user);
         }
 
         return "index/index";
