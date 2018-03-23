@@ -4,10 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
-/**
-*
-*  @author 
-*/
+/**  * Created by LK on 2018/3/23.  */
 public class BaseUser implements Serializable {
 
     private static final long serialVersionUID = 1521621699473L;

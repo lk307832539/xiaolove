@@ -62,7 +62,7 @@ public class LoginAct {
 
     @RequestMapping(value = "/loginSuccess")
     public String loginSuccess(HttpServletRequest request, HttpServletResponse response,
-                               ModelMap model) throws Exception {
+                               ModelMap model) {
         Subject subject = SecurityUtils.getSubject();
         String username = (String) subject.getPrincipal();
 
