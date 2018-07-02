@@ -14,3 +14,16 @@
 2、删除jdbc.properties将配置文件移动到application.properties配置中
 
 3、删除多余的配置文件
+
+4、从mybatis转换为spring jpa
+
+---
+一些参考资料
+
+> Spring Boot : https://spring.io/projects/spring-boot
+
+集成了 SpringMVC 及一些其他的框架，减少了大量的配置文件，可以直接打成Jar包运行也可以打war包发布到Tomcat下运行
+
+> Spring Data JPA : https://docs.spring.io/spring-data/jpa/docs/2.0.8.RELEASE/reference/html/  
+
+默认使用 Hibernate ，简单的查询可以直接通过关键字来使用，也可以用@Query编写HQL来实现复杂的查询，添加 nativeQuery = true 来使用原生SQL

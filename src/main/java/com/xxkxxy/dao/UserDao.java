@@ -1,15 +1,13 @@
 package com.xxkxxy.dao;
 
 
-public interface UserDao {
+import com.xxkxxy.entity.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-//    int insert(@Param("pojo") User pojo);
-//
-//    int insertList(@Param("pojos") List< User> pojo);
-//
-//    List<User> select(@Param("pojo") User pojo);
-//
-//    int update(@Param("pojo") User pojo);
-//
-//    User findByUserName(@Param("userName") String userName);
+
+@Repository
+public interface UserDao extends JpaRepository<User, Integer> {
+
+    User findByUserId(Integer userId);
 }

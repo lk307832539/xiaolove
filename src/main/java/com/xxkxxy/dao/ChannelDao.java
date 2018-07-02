@@ -1,13 +1,10 @@
 package com.xxkxxy.dao;
 
-public interface ChannelDao {
+import com.xxkxxy.entity.Channel;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-//    int insert(@Param("pojo") Channel pojo);
-//
-//    int insertList(@Param("pojos") List< Channel> pojo);
-//
-//    List<Channel> select(@Param("pojo") Channel pojo);
-//
-//    int update(@Param("pojo") Channel pojo);
+@Repository
+public interface ChannelDao extends JpaRepository<Channel, Integer> {
 
 }
