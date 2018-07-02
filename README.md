@@ -18,6 +18,7 @@
 4、从mybatis转换为spring jpa
 
 ---
+
 一些参考资料
 
 > Spring Boot : https://spring.io/projects/spring-boot
@@ -27,3 +28,7 @@
 > Spring Data JPA : https://docs.spring.io/spring-data/jpa/docs/2.0.8.RELEASE/reference/html/  
 
 默认使用 Hibernate ，简单的查询可以直接通过关键字来使用，也可以用@Query编写HQL来实现复杂的查询，添加 nativeQuery = true 来使用原生SQL
+
+---
+
+计划将Blog整合到晓爱中，整合数据库内容等信息，重新设计数据库内容
