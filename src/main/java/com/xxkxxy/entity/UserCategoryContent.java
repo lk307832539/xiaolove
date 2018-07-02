@@ -1,48 +1,18 @@
 package com.xxkxxy.entity;
 
+import com.xxkxxy.entity.base.BaseUserCategoryContent;
+
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.io.Serializable;
 
 /**
- * Created by LK on 2018/3/23.
+ * 用户内容分组类
+ * Created by LK on 2017/5/7.
  */
 @Entity
-public class UserCategoryContent implements Serializable {
+public class UserCategoryContent extends BaseUserCategoryContent {
+    private static final long serialVersionUID = 1L;
 
-    private static final long serialVersionUID = 1521790247415L;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer userCategoryId;
-
-    private Integer contentId;
-
-
-    public void setUserCategoryId(Integer userCategoryId) {
-        this.userCategoryId = userCategoryId;
+    public UserCategoryContent() {
+        super();
     }
-
-    public Integer getUserCategoryId() {
-        return this.userCategoryId;
-    }
-
-    public void setContentId(Integer contentId) {
-        this.contentId = contentId;
-    }
-
-    public Integer getContentId() {
-        return this.contentId;
-    }
-
-    @Override
-    public String toString() {
-        return "UserCategoryContent{" +
-                "userCategoryId='" + userCategoryId + '\'' +
-                "contentId='" + contentId + '\'' +
-                '}';
-    }
-
 }
