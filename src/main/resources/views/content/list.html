@@ -16,19 +16,21 @@
 
 <!--Mask-->
 <div class="view hm-black-strong">
-    <div class="full-bg-img flex-center">
-        <ul class="animated fadeInUp">
-            <li>
-                <h1 class="h1-responsive">正在组件中。。。</h1></li>
-            <li>
-                <p>内部使用。。。！=。=！</p>
-            </li>
-            [#if user??]
-                <li>
-                    <a target="_self" href="/content/list.do" class="btn btn-primary btn-lg">笔记列表</a>
-                </li>
-            [/#if]
-        </ul>
+    <div class="full-bg-img">
+        <div class="container" style="margin-top: 100px;">
+            <div class="col-lg-2">
+                <a target="_self" href="/content/add.do" class="btn btn-primary btn-lg">新建笔记</a>
+            </div>
+            <div class="col-lg-10">
+                <ul class="animated fadeInUp">
+                    [#list list as content]
+                    <li>
+                        <h1 class="h1-responsive"><a href="/content/view.do?id=${content.contentId}">${content.contentExt.title!}</a></h1>
+                    </li>
+                    [/#list]
+                </ul>
+            </div>
+        </div>
     </div>
 </div>
 

@@ -8,6 +8,12 @@
     <link href="/MDB/css/mdb.min.css" rel="stylesheet">
     <link href="/css/indexstyle.css" rel="stylesheet">
     <script type="text/javascript" src="/MDB/js/jquery-2.2.3.min.js"></script>
+
+    <script type="text/javascript" src="/ueditor/third-party/SyntaxHighlighter/shCore.js"></script>
+    <link rel="stylesheet" type="text/css" href="/ueditor/third-party/SyntaxHighlighter/shCoreDefault.css">
+    <script type="text/javascript">
+        SyntaxHighlighter.all();
+    </script>
 </head>
 <body>
 <!--Navbar-->
@@ -15,20 +21,13 @@
 <!--/.Navbar-->
 
 <!--Mask-->
-<div class="view hm-black-strong">
-    <div class="full-bg-img flex-center">
-        <ul class="animated fadeInUp">
-            <li>
-                <h1 class="h1-responsive">正在组件中。。。</h1></li>
-            <li>
-                <p>内部使用。。。！=。=！</p>
-            </li>
-            [#if user??]
-                <li>
-                    <a target="_self" href="/content/list.do" class="btn btn-primary btn-lg">笔记列表</a>
-                </li>
-            [/#if]
-        </ul>
+<div class="container">
+    <div style="height: 100px;"></div>
+    <div class="row">
+        <div><h1>${content.contentExt.title}</h1></div>
+    </div>
+    <div class="row">
+        ${content.contentExt.text}
     </div>
 </div>
 

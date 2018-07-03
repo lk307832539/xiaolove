@@ -1,0 +1,61 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>新增日志</title>
+    <link href="/fontAwesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/MDB/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/MDB/css/mdb.min.css" rel="stylesheet">
+    <link href="/css/indexstyle.css" rel="stylesheet">
+    <script type="text/javascript" src="/MDB/js/jquery-2.2.3.min.js"></script>
+
+    <script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.all.min.js"></script>
+    <!--建议手动加在语言，避免在ie下有时因为加载语言失败导致编辑器加载失败-->
+    <!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
+    <script type="text/javascript" charset="utf-8" src="/ueditor/lang/zh-cn/zh-cn.js"></script>
+</head>
+
+<body>
+
+<div class="container">
+    <div style="height: 100px;"></div>
+    <form action="/content/save.do" method="post" id="saveForm">
+        <div class="md-form">
+            <i class="fa fa-header prefix"></i>
+            <input type="text" id="form2" name="title" class="form-control">
+            <label for="form2">标题</label>
+        </div>
+        <div><a>切换到MarkDown编辑器</a></div>
+        <div>文章内容</div>
+
+        <div><script id="editor" type="text/plain" style="width:100%;height:500px;"></script></div>
+        <input type="hidden" name="txt" id="txt">
+        <input type="hidden" name="editorType" value="1">
+        <button type="button" class="btn btn-default" onclick="addNew()">保存</button>
+    </form>
+</div>
+
+<script type="text/javascript">
+    //实例化编辑器
+    //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
+    var ue = UE.getEditor('editor');
+
+    SyntaxHighlighter.all();
+
+    function addNew() {
+        if (UE.getEditor('editor').hasContents()) {
+            var txt = UE.getEditor('editor').getContent();
+            $("#txt").attr("value",txt);
+            $("#saveForm").submit();
+        } else {
+            alert("编辑器没有内容，请填写内容");
+            return false;
+        }
+    }
+</script>
+<script type="text/javascript" src="/MDB/js/tether.min.js"></script>
+<script type="text/javascript" src="/MDB/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/MDB/js/mdb.min.js"></script>
+</body>
+</html>
