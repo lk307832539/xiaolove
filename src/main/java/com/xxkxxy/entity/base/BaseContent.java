@@ -23,7 +23,7 @@ public abstract class BaseContent implements Serializable {
     private Integer status;
     private Integer editorType;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 

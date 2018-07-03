@@ -23,21 +23,16 @@ public abstract class BaseUser implements Serializable {
     private String email;
     private String password;
     private String salt;
-    private Timestamp registerTime;
-    private String registerIp;
     private Timestamp lastLoginTime;
     private String lastLoginIp;
     private String loginCount;
     private String validateCode;
-    private Byte regiestType;
     private Integer score;
 
-    @OneToMany
-    @JoinColumn(name = "content_id")
+    @OneToMany(mappedBy = "user")
     private Collection<Content> contents;
 
-    @OneToMany
-    @JoinColumn(name = "user_categorie_id")
+    @OneToMany(mappedBy = "user")
     private Collection<UserCategory> userCategories;
 
     @OneToOne(cascade = CascadeType.ALL)
@@ -96,22 +91,6 @@ public abstract class BaseUser implements Serializable {
         this.salt = salt;
     }
 
-    public Timestamp getRegisterTime() {
-        return registerTime;
-    }
-
-    public void setRegisterTime(Timestamp registerTime) {
-        this.registerTime = registerTime;
-    }
-
-    public String getRegisterIp() {
-        return registerIp;
-    }
-
-    public void setRegisterIp(String registerIp) {
-        this.registerIp = registerIp;
-    }
-
     public Timestamp getLastLoginTime() {
         return lastLoginTime;
     }
@@ -142,14 +121,6 @@ public abstract class BaseUser implements Serializable {
 
     public void setValidateCode(String validateCode) {
         this.validateCode = validateCode;
-    }
-
-    public Byte getRegiestType() {
-        return regiestType;
-    }
-
-    public void setRegiestType(Byte regiestType) {
-        this.regiestType = regiestType;
     }
 
     public Integer getScore() {

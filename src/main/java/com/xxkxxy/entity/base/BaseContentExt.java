@@ -12,7 +12,7 @@ import java.io.Serializable;
 public abstract class BaseContentExt implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int contentId;
+    private Integer contentId;
     private String title;
     private String text;
 
@@ -23,11 +23,11 @@ public abstract class BaseContentExt implements Serializable {
         super();
     }
 
-    public int getContentId() {
+    public Integer getContentId() {
         return contentId;
     }
 
-    public void setContentId(int contentId) {
+    public void setContentId(Integer contentId) {
         this.contentId = contentId;
     }
 

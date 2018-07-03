@@ -1,11 +1,5 @@
 package com.xxkxxy.entity.base;
 
-import com.xxkxxy.entity.Content;
-import com.xxkxxy.entity.UserCategory;
-
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
 
@@ -14,15 +8,11 @@ import java.io.Serializable;
  */
 @MappedSuperclass
 public abstract class BaseUserCategoryContent implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int userCategoryId;
 
-    private UserCategory userCategory;
-    private Content content;
+    private int userCategoryId;
+    private int contentId;
 
     public BaseUserCategoryContent() {
-        super();
     }
 
     public int getUserCategoryId() {
@@ -33,19 +23,11 @@ public abstract class BaseUserCategoryContent implements Serializable {
         this.userCategoryId = userCategoryId;
     }
 
-    public UserCategory getUserCategory() {
-        return userCategory;
+    public int getContentId() {
+        return contentId;
     }
 
-    public void setUserCategory(UserCategory userCategory) {
-        this.userCategory = userCategory;
-    }
-
-    public Content getContent() {
-        return content;
-    }
-
-    public void setContent(Content content) {
-        this.content = content;
+    public void setContentId(int contentId) {
+        this.contentId = contentId;
     }
 }

@@ -40,4 +40,16 @@
 
 #### 实体类继承抽象类时候，使用注解开发
 
+2018/07/02
+
 使用@MappedSuperclass注解
+
+#### MySQL 连接出现 Public Key Retrieval is not allowed
+
+2018/07/03 
+
+在jdbc url上添加
+
+```
+allowPublicKeyRetrieval=true
+```

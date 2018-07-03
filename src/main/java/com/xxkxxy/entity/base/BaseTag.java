@@ -13,7 +13,7 @@ import java.io.Serializable;
 public abstract class BaseTag implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int tagId;
+    private Integer tagId;
     private String tagName;
     private String tagDescription;
 
@@ -21,11 +21,11 @@ public abstract class BaseTag implements Serializable {
         super();
     }
 
-    public int getTagId() {
+    public Integer getTagId() {
         return tagId;
     }
 
-    public void setTagId(int tagId) {
+    public void setTagId(Integer tagId) {
         this.tagId = tagId;
     }
 

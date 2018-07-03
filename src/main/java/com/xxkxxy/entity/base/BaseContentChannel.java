@@ -11,7 +11,6 @@ public class BaseContentChannel implements Serializable {
 
     private static final long serialVersionUID = 1521790247415L;
 
-
     private Integer channelId;
     private Integer contentId;
 
