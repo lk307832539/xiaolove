@@ -11,7 +11,7 @@ import java.io.Serializable;
 @MappedSuperclass
 public abstract class BaseContentExt implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer contentId;
     private String title;
     private String text;

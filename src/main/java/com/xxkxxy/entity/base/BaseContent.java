@@ -2,6 +2,7 @@ package com.xxkxxy.entity.base;
 
 import com.xxkxxy.entity.ContentExt;
 import com.xxkxxy.entity.User;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -13,7 +14,7 @@ import java.sql.Timestamp;
 @MappedSuperclass
 public abstract class BaseContent implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer contentId;
     private Integer categoryId;
     private Timestamp createDate;

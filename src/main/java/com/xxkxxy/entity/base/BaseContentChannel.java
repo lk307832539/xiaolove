@@ -1,7 +1,10 @@
 package com.xxkxxy.entity.base;
 
+import org.springframework.data.annotation.CreatedDate;
+
 import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 /**
  * Created by LK on 2018/3/23.
@@ -13,6 +16,9 @@ public class BaseContentChannel implements Serializable {
 
     private Integer channelId;
     private Integer contentId;
+
+    @CreatedDate
+    private Timestamp createTime;
 
     public Integer getChannelId() {
         return channelId;
@@ -28,6 +34,14 @@ public class BaseContentChannel implements Serializable {
 
     public void setContentId(Integer contentId) {
         this.contentId = contentId;
+    }
+
+    public Timestamp getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Timestamp createTime) {
+        this.createTime = createTime;
     }
 
     @Override

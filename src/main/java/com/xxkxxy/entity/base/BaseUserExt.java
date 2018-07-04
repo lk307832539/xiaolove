@@ -13,10 +13,9 @@ import java.sql.Date;
 @MappedSuperclass
 public abstract class BaseUserExt implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int userId;
     private String userImg;
-    private String nickName;
     private String realName;
     private Date birthday;
     private String sex;
@@ -47,14 +46,6 @@ public abstract class BaseUserExt implements Serializable {
 
     public void setUserImg(String userImg) {
         this.userImg = userImg;
-    }
-
-    public String getNickName() {
-        return nickName;
-    }
-
-    public void setNickName(String nickName) {
-        this.nickName = nickName;
     }
 
     public String getRealName() {

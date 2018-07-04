@@ -12,7 +12,7 @@ import java.io.Serializable;
 @MappedSuperclass
 public abstract class BaseChannel implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int channelId;
 
     private String channelName;

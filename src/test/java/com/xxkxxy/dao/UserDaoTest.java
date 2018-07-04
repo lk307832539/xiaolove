@@ -1,6 +1,7 @@
 package com.xxkxxy.dao;
 
 import com.xxkxxy.entity.User;
+import com.xxkxxy.entity.UserExt;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,17 +15,21 @@ public class UserDaoTest {
 
     @Resource
     private UserDao userDao;
+    @Resource
+    private UserExtDao userExtDao;
 
     @Test
     public void save() {
         User user = new User();
+
+        UserExt userExt = new UserExt();
+
         user.setUserName("admin");
         user.setPassword("password");
+        user.setUserExt(userExt);
+
+        userExt.setUser(user);
         userDao.save(user);
     }
 
-    @Test
-    public void findByUserId() {
-
-    }
 }

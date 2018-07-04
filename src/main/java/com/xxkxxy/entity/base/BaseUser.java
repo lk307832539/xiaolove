@@ -15,7 +15,7 @@ import java.util.Collection;
 @MappedSuperclass
 public abstract class BaseUser implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int userId;
 
     private String userName;

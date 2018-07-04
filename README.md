@@ -44,6 +44,8 @@
 
 使用@MappedSuperclass注解
 
+---
+
 #### MySQL 连接出现 Public Key Retrieval is not allowed
 
 2018/07/03 
@@ -53,3 +55,26 @@
 ```
 allowPublicKeyRetrieval=true
 ```
+
+---
+
+#### JPA OneToOne 
+
+2018/07/04
+
+以 user 和 userExt 为例
+
+主表
+
+@OneToOne(cascade = CascadeType.ALL)
+
+@JoinColumn(name = "user_id")
+
+
+从表
+
+@OneToOne(mappedBy = "userExt")
+
+> 当使用主键生成策略使用 GenerationType.AUTO 时候会按递增生成 ID ，使用全局数字生成器为每个新的实体对象生成主键。这些生成的值在数据库级别是唯一的,不会被回收,这些主键值被多个表共享。这样ID就不能相对应，修改为 GenerationType.IDENTITY 。
+
+---

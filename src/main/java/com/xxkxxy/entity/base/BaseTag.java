@@ -12,7 +12,7 @@ import java.io.Serializable;
 @MappedSuperclass
 public abstract class BaseTag implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer tagId;
     private String tagName;
     private String tagDescription;

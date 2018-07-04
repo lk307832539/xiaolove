@@ -11,7 +11,7 @@ import java.io.Serializable;
 @MappedSuperclass
 public abstract class BaseUserCategory implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int userCategoryId;
     private String categoryName;
     private String categoryDescription;
