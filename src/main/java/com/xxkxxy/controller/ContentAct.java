@@ -60,7 +60,7 @@ public class ContentAct {
         contentExtService.save(contentExt);
         content.setContentExt(contentExt);
 
-        return "redirect:/content/list.do";
+        return "redirect:/content/list";
     }
 
     @RequestMapping(value = "/view")

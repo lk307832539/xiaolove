@@ -19,13 +19,13 @@
     <div class="full-bg-img">
         <div class="container" style="margin-top: 100px;">
             <div class="col-lg-2">
-                <a target="_self" href="/content/add.do" class="btn btn-primary btn-lg">新建笔记</a>
+                <a target="_self" href="/content/add" class="btn btn-primary btn-lg">新建笔记</a>
             </div>
             <div class="col-lg-10">
                 <ul class="animated fadeInUp">
                     [#list list as content]
                     <li>
-                        <h1 class="h1-responsive"><a href="/content/view.do?id=${content.contentId}">${content.contentExt.title!}</a></h1>
+                        <h1 class="h1-responsive"><a href="/content/view?id=${content.contentId}">${content.contentExt.title!}</a></h1>
                     </li>
                     [/#list]
                 </ul>

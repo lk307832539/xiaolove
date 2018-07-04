@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @Controller
 public class IndexAct {
-    @RequestMapping(value = {"/", "/index.do"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
     public String index(HttpServletRequest request, HttpServletResponse response, ModelMap model) {
         return "index/index";
     }

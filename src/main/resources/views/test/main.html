@@ -21,7 +21,7 @@
     function changeView(obj) {
         var value = obj.value;
         $.ajax({
-            url: "testAjax.do",
+            url: "testAjax",
             data: {temp: value},
             success: function (data) {
                 $("#view").html(data)

@@ -92,9 +92,9 @@ public class ShiroConfiguration {
         // 必须设置 SecurityManager
         shiroFilterFactoryBean.setSecurityManager(securityManager);
         // 如果不设置默认会自动寻找Web工程根目录下的"/login"页面
-        shiroFilterFactoryBean.setLoginUrl("/login.do");
+        shiroFilterFactoryBean.setLoginUrl("/login");
         // 登录成功后要跳转的连接
-        shiroFilterFactoryBean.setSuccessUrl("/loginSuccess.do");
+        shiroFilterFactoryBean.setSuccessUrl("/loginSuccess");
         shiroFilterFactoryBean.setUnauthorizedUrl("/denied");
         loadShiroFilterChain(shiroFilterFactoryBean);
         return shiroFilterFactoryBean;
@@ -110,8 +110,8 @@ public class ShiroConfiguration {
         // 需要验证的写 authc 不需要的写 anon
         filterChainDefinitionMap.put("/static/**", "anon");
         filterChainDefinitionMap.put("/upload/**", "anon");
-        filterChainDefinitionMap.put("/login.do", "anon");
-        filterChainDefinitionMap.put("/logout.do", "logout");
+        filterChainDefinitionMap.put("/login", "anon");
+        filterChainDefinitionMap.put("/logout", "logout");
         // anon：它对应的过滤器里面是空的,什么都没做
         //log.info("##################从数据库读取权限规则，加载到shiroFilter中##################");
 
