@@ -31,7 +31,6 @@ public class ContentDaoTest {
         content.setCreateDate(new Timestamp(System.currentTimeMillis()));
         content.setContentExt(contentExt);
 
-        contentExt.setContentId(content.getContentId());
         contentExt.setContent(content);
 
         contentDao.save(content);

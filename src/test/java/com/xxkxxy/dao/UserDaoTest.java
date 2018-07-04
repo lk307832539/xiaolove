@@ -28,7 +28,6 @@ public class UserDaoTest {
         user.setPassword("password");
         user.setUserExt(userExt);
 
-        userExt.setUser(user);
         userDao.save(user);
     }
 

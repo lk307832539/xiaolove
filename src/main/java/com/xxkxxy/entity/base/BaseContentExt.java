@@ -13,6 +13,7 @@ public abstract class BaseContentExt implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer contentId;
+
     private String title;
     private String text;
 

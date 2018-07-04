@@ -16,6 +16,7 @@ public abstract class BaseContent implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer contentId;
+
     private Integer categoryId;
     private Timestamp createDate;
     private Timestamp pubDate;
