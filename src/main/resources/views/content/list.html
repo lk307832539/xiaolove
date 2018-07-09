@@ -25,7 +25,7 @@
                 <ul class="animated fadeInUp">
                     [#list list as content]
                     <li>
-                        <h1 class="h1-responsive"><a href="/content/view?id=${content.contentId}">${content.contentExt.title!}</a></h1>
+                        <h1 class="h1-responsive"><a href="/content/view?id=${(content.contentId)!}">${(content.contentExt.title)!}</a></h1>
                     </li>
                     [/#list]
                 </ul>

@@ -45,20 +45,22 @@ public class ContentAct {
 
         User user = (User) request.getSession().getAttribute("user");
         Content content = new Content();
+
+        ContentExt contentExt = new ContentExt();
+
+        contentExt.setContent(content);
+        contentExt.setTitle(title);
+        contentExt.setText(txt);
+
         content.setUser(user);
         content.setEditorType(editorType);
         content.setCreateDate(new Timestamp(System.currentTimeMillis()));
         content.setLastModifyDate(new Timestamp(System.currentTimeMillis()));
         content.setStatus(1);
         content.setPubDate(new Timestamp(System.currentTimeMillis()));
-        contentService.save(content);
 
-        ContentExt contentExt = new ContentExt();
-        contentExt.setContent(content);
-        contentExt.setTitle(title);
-        contentExt.setText(txt);
-        contentExtService.save(contentExt);
         content.setContentExt(contentExt);
+        contentService.save(content);
 
         return "redirect:/content/list";
     }

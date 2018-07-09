@@ -119,7 +119,8 @@ public class ShiroConfiguration {
 //        Map<String, String> permissions = new LinkedHashMap<>();
 //        permissions.put("/users/find", "perms[user:find]");
 //        filterChainDefinitionMap.putAll(permissions);
-//        filterChainDefinitionMap.put("/**", "authc");
+
+        filterChainDefinitionMap.put("/**", "authc");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
     }
 }

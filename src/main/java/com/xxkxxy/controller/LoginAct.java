@@ -33,7 +33,8 @@ public class LoginAct {
         Subject subject = SecurityUtils.getSubject();
         try {
             subject.login(usernamePasswordToken);   //完成登录
-            User user = (User) subject.getPrincipal();
+            String userName = subject.getPrincipal().toString();
+            User user = userService.findByUserName(userName);
             session.setAttribute("user", user);
             return "index/index";
         } catch (Exception e) {
