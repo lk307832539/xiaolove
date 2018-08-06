@@ -9,6 +9,7 @@ import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import javax.annotation.Resource;
@@ -75,6 +76,14 @@ public class LoginAct {
 
     }
 
+
+    @RequestMapping(value = "/logout")
+    public String logout() {
+        Subject subject = SecurityUtils.getSubject();
+        //注销
+        subject.logout();
+        return "index";
+    }
 
     /*@RequestMapping(value = "/loginout")
     public String loginOut(SessionStatus sessionStatus, HttpSession session) {

@@ -108,14 +108,12 @@ public class ShiroConfiguration {
         // TODO 重中之重啊，过滤顺序一定要根据自己需要排序
         Map<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
 
-        filterChainDefinitionMap.put("/**", "authc");
         // 需要验证的写 authc 不需要的写 anon
-        filterChainDefinitionMap.put("/static/*", "anon");
-        filterChainDefinitionMap.put("/static/**", "anon");
-        filterChainDefinitionMap.put("/upload/*", "anon");
-        filterChainDefinitionMap.put("/upload/**", "anon");
         filterChainDefinitionMap.put("/login", "anon");
         filterChainDefinitionMap.put("/logout", "logout");
+
+        filterChainDefinitionMap.put("/static/*", "anon");
+        filterChainDefinitionMap.put("/upload/*", "anon");
         // anon：它对应的过滤器里面是空的,什么都没做
         //log.info("##################从数据库读取权限规则，加载到shiroFilter中##################");
 
@@ -124,7 +122,8 @@ public class ShiroConfiguration {
 //        permissions.put("/users/find", "perms[user:find]");
 //        filterChainDefinitionMap.putAll(permissions);
 
-//        filterChainDefinitionMap.put("/**", "authc");
+        filterChainDefinitionMap.put("/**", "authc");
+
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
     }
 }
