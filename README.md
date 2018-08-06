@@ -133,3 +133,25 @@ allowPublicKeyRetrieval=true
             * FetchType.EAGER:代表立即加载；
             * FetchType.LAZY:代表延迟加载。
 ---
+
+#### Spring Boot Shiro处理静态资源的坑
+
+2018/8/06
+
+```java
+//错误的示例
+filterChainDefinitionMap.put("/static/**", "anon");
+
+filterChainDefinitionMap.put("/bootstrap4/**", "anon");
+filterChainDefinitionMap.put("/css/**", "anon");
+filterChainDefinitionMap.put("/fontAwesome/**", "anon");
+filterChainDefinitionMap.put("/images/**", "anon");
+filterChainDefinitionMap.put("/js/**", "anon");
+filterChainDefinitionMap.put("/MDB/**", "anon");
+filterChainDefinitionMap.put("/upload/**", "anon");
+filterChainDefinitionMap.put("/ueditor/**", "anon");
+```
+
+在Spring Boot 中直接对  /static/** 进行权限分配并不能对静态资源放行，需要对下面的每个文件夹下的内容进行权限分配
+
+因为访问资源文件的时候，Url中内容是并不包括/static
