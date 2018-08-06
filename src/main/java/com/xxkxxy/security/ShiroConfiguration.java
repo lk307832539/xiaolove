@@ -109,11 +109,19 @@ public class ShiroConfiguration {
         Map<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
 
         // 需要验证的写 authc 不需要的写 anon
+
+        filterChainDefinitionMap.put("/static/**", "anon");
+        filterChainDefinitionMap.put("/bootstrap4/**", "anon");
+        filterChainDefinitionMap.put("/css/**", "anon");
+        filterChainDefinitionMap.put("/fontAwesome/**", "anon");
+        filterChainDefinitionMap.put("/images/**", "anon");
+        filterChainDefinitionMap.put("/js/**", "anon");
+        filterChainDefinitionMap.put("/MDB/**", "anon");
+        filterChainDefinitionMap.put("/upload/**", "anon");
+        filterChainDefinitionMap.put("/ueditor/**", "anon");
+
         filterChainDefinitionMap.put("/login", "anon");
         filterChainDefinitionMap.put("/logout", "logout");
-
-        filterChainDefinitionMap.put("/static/*", "anon");
-        filterChainDefinitionMap.put("/upload/*", "anon");
         // anon：它对应的过滤器里面是空的,什么都没做
         //log.info("##################从数据库读取权限规则，加载到shiroFilter中##################");
 
