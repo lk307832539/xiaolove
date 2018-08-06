@@ -20,15 +20,15 @@ public class UserDaoTest {
 
     @Test
     public void save() {
-        User user = new User();
-
-        UserExt userExt = new UserExt();
-
-        user.setUserName("admin");
-        user.setPassword("password");
-        user.setUserExt(userExt);
-
-        userDao.save(user);
+//        User user = new User();
+//
+//        UserExt userExt = new UserExt();
+//
+//        user.setUserName("admin");
+//        user.setPassword("password");
+//        user.setUserExt(userExt);
+//
+//        userDao.save(user);
     }
 
 }

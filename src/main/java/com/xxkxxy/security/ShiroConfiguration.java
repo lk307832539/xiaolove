@@ -107,6 +107,8 @@ public class ShiroConfiguration {
         /////////////////////// 下面这些规则配置最好配置到配置文件中 ///////////////////////
         // TODO 重中之重啊，过滤顺序一定要根据自己需要排序
         Map<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
+
+        filterChainDefinitionMap.put("/**", "authc");
         // 需要验证的写 authc 不需要的写 anon
         filterChainDefinitionMap.put("/static/*", "anon");
         filterChainDefinitionMap.put("/static/**", "anon");
@@ -122,7 +124,7 @@ public class ShiroConfiguration {
 //        permissions.put("/users/find", "perms[user:find]");
 //        filterChainDefinitionMap.putAll(permissions);
 
-        filterChainDefinitionMap.put("/**", "authc");
+//        filterChainDefinitionMap.put("/**", "authc");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
     }
 }

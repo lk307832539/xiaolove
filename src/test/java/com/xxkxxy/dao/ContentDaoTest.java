@@ -21,18 +21,18 @@ public class ContentDaoTest {
 
     @Test
     public void save() {
-
-        User user = userDao.getOne(1);
-
-        Content content = new Content();
-        ContentExt contentExt = new ContentExt();
-
-        content.setUser(user);
-        content.setCreateDate(new Timestamp(System.currentTimeMillis()));
-        content.setContentExt(contentExt);
-
-        contentExt.setContent(content);
-
-        contentDao.save(content);
+//
+//        User user = userDao.getOne(1);
+//
+//        Content content = new Content();
+//        ContentExt contentExt = new ContentExt();
+//
+//        content.setUser(user);
+//        content.setCreateDate(new Timestamp(System.currentTimeMillis()));
+//        content.setContentExt(contentExt);
+//
+//        contentExt.setContent(content);
+//
+//        contentDao.save(content);
     }
 }
