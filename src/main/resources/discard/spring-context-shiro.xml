@@ -8,21 +8,20 @@
 
     <!-- 安全认证过滤器 -->
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
-        <property name="securityManager" ref="securityManager" /><!--
+        <property name="securityManager" ref="securityManager"/><!--
         <property name="loginUrl" value="${cas.server.url}?service=${cas.project.url}${adminPath}/cas" /> -->
-        <property name="loginUrl" value="/login.do" />
+        <property name="loginUrl" value="/login.do"/>
         <!-- 认证成功统一跳转到first.action，建议不配置，shiro认证成功自动到上一个请求路径 -->
         <property name="successUrl" value="/loginSuccess.do"/>
         <property name="filters">
             <map>
-                <entry key="authc" value-ref="authcFilter" />
+                <entry key="authc" value-ref="authcFilter"/>
             </map>
         </property>
         <property name="filterChainDefinitions">
             <ref bean="shiroFilterChainDefinitions"/>
         </property>
     </bean>
-
 
 
     <!-- Shiro权限过滤过滤器定义 -->
@@ -41,9 +40,9 @@
     <!--自定义AuthenticationFilter如增加验证码-->
     <bean id="authcFilter" class="com.xxkxxy.security.CustomAuthenticationFilter">
         <!-- 表单中账号的input名称 -->
-        <property name="usernameParam" value="username" />
+        <property name="usernameParam" value="username"/>
         <!-- 表单中密码的input名称 -->
-        <property name="passwordParam" value="password" />
+        <property name="passwordParam" value="password"/>
         <!-- 记住我input的名称 -->
         <!--<property name="rememberMeParam" value="rememberMe"/>-->
     </bean>
@@ -55,9 +54,9 @@
 
     <!-- 定义Shiro安全管理配置 -->
     <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
-        <property name="realm" ref="customRealm" />
-        <property name="sessionManager" ref="sessionManager" />
-        <property name="cacheManager" ref="shiroEhcacheManager" />
+        <property name="realm" ref="customRealm"/>
+        <property name="sessionManager" ref="sessionManager"/>
+        <property name="cacheManager" ref="shiroEhcacheManager"/>
     </bean>
 
     <!-- realm -->
@@ -93,7 +92,7 @@
 
     <!-- AOP式方法级权限检查  -->
     <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" depends-on="lifecycleBeanPostProcessor">
-        <property name="proxyTargetClass" value="true" />
+        <property name="proxyTargetClass" value="true"/>
     </bean>
     <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
         <property name="securityManager" ref="securityManager"/>

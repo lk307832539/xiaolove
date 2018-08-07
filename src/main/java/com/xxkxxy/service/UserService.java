@@ -13,7 +13,7 @@ public class UserService {
     private UserDao userDao;
 
     public User findByUserName(String userName) {
-       return userDao.findByUserName(userName);
+        return userDao.findByUserName(userName);
     }
 
     public User save(User user) {

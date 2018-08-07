@@ -9,12 +9,12 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 @SpringBootApplication
 public class XiaoloveApplication extends SpringBootServletInitializer {
 
-	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(XiaoloveApplication.class);
-	}
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(XiaoloveApplication.class);
+    }
 
-	public static void main(String[] args) {
-		SpringApplication.run(XiaoloveApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(XiaoloveApplication.class, args);
+    }
 }
