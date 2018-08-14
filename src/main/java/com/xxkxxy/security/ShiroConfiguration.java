@@ -120,6 +120,8 @@ public class ShiroConfiguration {
         filterChainDefinitionMap.put("/upload/**", "anon");
         filterChainDefinitionMap.put("/ueditor/**", "anon");
 
+        filterChainDefinitionMap.put("/love/**", "anon");
+
         filterChainDefinitionMap.put("/login", "anon");
         filterChainDefinitionMap.put("/logout", "logout");
         // anon：它对应的过滤器里面是空的,什么都没做
