@@ -1,4 +1,4 @@
-package com.xxkxxy;
+package com;
 
 
 import org.springframework.boot.SpringApplication;
