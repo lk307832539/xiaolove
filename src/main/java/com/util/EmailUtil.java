@@ -1,4 +1,4 @@
-package com.menstrual.util;
+package com.util;
 
 import com.sun.mail.util.MailSSLSocketFactory;
 import org.slf4j.Logger;
