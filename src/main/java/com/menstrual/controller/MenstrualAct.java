@@ -28,28 +28,6 @@ public class MenstrualAct {
         List<Menstrual> all = menstrualService.findAll();
         if (all.size() == 0) {
             List<String> list = new ArrayList<>();
-            list.add("20160614");
-            list.add("20160714");
-            list.add("20160822");
-            list.add("20160927");
-            list.add("20161106");
-            list.add("20161210");
-            list.add("20170116");
-            list.add("20170217");
-            list.add("20170322");
-            list.add("20170427");
-            list.add("20170602");
-            list.add("20170709");
-            list.add("20170810");
-            list.add("20170923");
-            list.add("20171121");
-            list.add("20180103");
-            list.add("20180302");
-            list.add("20180421");
-            list.add("20180523");
-            list.add("20180623");
-            list.add("20180805");
-            list.add("20180913");
 
 
             List<Menstrual> menstruals = new ArrayList<>();
@@ -85,7 +63,7 @@ public class MenstrualAct {
 
     }
 
-    private Menstrual getFirstMenstrual(String time,Integer betweenTime) throws ParseException {
+    private Menstrual getFirstMenstrual(String time, Integer betweenTime) throws ParseException {
         Menstrual menstrual = new Menstrual();
         menstrual.setStartDate(DateTimeFormatUtil.localDate2Date(DateTimeFormatUtil.yyyyMMdd2LocalDate(time)));
         menstrual.setInterval(betweenTime);
@@ -94,28 +72,6 @@ public class MenstrualAct {
 
     public static void main(String[] args) throws ParseException {
         List<String> list = new ArrayList<>();
-        list.add("20160614");
-        list.add("20160714");
-        list.add("20160822");
-        list.add("20160927");
-        list.add("20161106");
-        list.add("20161210");
-        list.add("20170116");
-        list.add("20170217");
-        list.add("20170322");
-        list.add("20170427");
-        list.add("20170602");
-        list.add("20170709");
-        list.add("20170810");
-        list.add("20170923");
-        list.add("20171121");
-        list.add("20180103");
-        list.add("20180302");
-        list.add("20180421");
-        list.add("20180523");
-        list.add("20180623");
-        list.add("20180805");
-        list.add("20180913");
 
         for (int i = 1; i < list.size(); i++) {
             LocalDate now = DateTimeFormatUtil.yyyyMMdd2LocalDate(list.get(i));

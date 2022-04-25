@@ -1,15 +1,10 @@
 package com.xxkxxy.dao;
 
-import com.xxkxxy.entity.User;
-import com.xxkxxy.entity.UserExt;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest
 public class UserDaoTest {
 

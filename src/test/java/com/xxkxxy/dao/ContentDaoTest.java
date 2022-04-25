@@ -1,17 +1,10 @@
 package com.xxkxxy.dao;
 
-import com.xxkxxy.entity.Content;
-import com.xxkxxy.entity.ContentExt;
-import com.xxkxxy.entity.User;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
-import java.sql.Timestamp;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest
 public class ContentDaoTest {
     @Resource

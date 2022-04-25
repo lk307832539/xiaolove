@@ -22,3 +22,6 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+
+/src/main/resources/rebel.xml
+/src/main/resources/rebel-remote.xml
